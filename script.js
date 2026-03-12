@@ -8,6 +8,8 @@ const emailInput = document.querySelector('#email');
 const emailField = document.querySelector('#email-field');
 const form = document.querySelector('.cta__form');
 const ctaErrorMessage = document.querySelector('#email-error');
+const backdrop = document.querySelector('.backdrop');
+const navLinks = document.querySelector('.nav__links');
 
 
 const state = {
@@ -17,16 +19,22 @@ const state = {
 navToggle.addEventListener('click', () => {
     const isOpen = navToggle.classList.toggle('is-active');
     navToggle.setAttribute('aria-expanded', isOpen);
-    document.querySelector('.nav__links').classList.toggle('is-active');
+    backdrop.classList.toggle('is-active');
+    document.body.classList.toggle('no-scroll', isOpen);
+    document.querySelector('.main-nav').classList.toggle('is-active');
+    document.querySelector('.nav__socialBtn').classList.toggle('is-active');
+    navLinks.classList.toggle('is-active', isOpen);
 });
 
 featuresTabs.forEach(tab => {
   tab.addEventListener('click', () => {
     featuresTabs.forEach(otherTab => {
       otherTab.classList.remove('is-active');
+      otherTab.setAttribute('aria-selected', 'false');
     });
 
     tab.classList.add('is-active');
+    tab.setAttribute('aria-selected', 'true');
 
     const selectedTab = tab.closest('.features__tab').dataset.tab;
     state.activeTab = selectedTab;
