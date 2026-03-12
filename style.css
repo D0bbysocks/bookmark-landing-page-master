@@ -1296,15 +1296,13 @@ a {
   .extensions__card::after {
     content: "";
     position: absolute;
-    bottom: -32px; /* Position it below the card content */
+    bottom: -32px;
     left: 0;
     width: 100%;
     height: 8px;
     background: url("./images/bg-dots.svg") repeat-x center;
   }
-  
-  /* On 720px - 1099px, cards are side by side but not staggered yet */
-  /* The ::after on each card will perfectly connect into one long line */
+
 
   .extensions__body {
     position: relative;
@@ -1581,11 +1579,8 @@ a {
 
   .extensions__card {
     padding-block: var(--space-32);
-    /* No relative position needed here, inherited from 720px mq */
   }
 
-  /* Due to the staggered margin-top below, the ::after from each card 
-     will naturally follow the staggered height, solving the desktop issue */
   .extensions__card:nth-child(2) {
     margin-top: var(--space-40);
   }
